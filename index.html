@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Stepping Into 22 ❤️</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            color: white;
+        }
+
+        /* =========================
+           BACKGROUND
+        ========================= */
+
+        .screen {
+
+            width: 100%;
+            height: 100vh;
+            height: 100dvh;
+
+            position: relative;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            text-align: center;
+
+            background-image:
+                linear-gradient(
+                    rgba(0, 0, 0, 0.48),
+                    rgba(0, 0, 0, 0.62)
+                ),
+                url("background.jpg");
+
+            background-size: cover;
+            background-position: center;
+
+            overflow: hidden;
+        }
+
+
+        /* =========================
+           DARK OVERLAY
+        ========================= */
+
+        .overlay {
+
+            position: absolute;
+
+            inset: 0;
+
+            background:
+                radial-gradient(
+                    circle at center,
+                    transparent 20%,
+                    rgba(0,0,0,.45) 100%
+                );
+
+            pointer-events: none;
+        }
+
+
+        /* =========================
+           CONTENT
+        ========================= */
+
+        .content {
+
+            position: relative;
+
+            z-index: 5;
+
+            width: 90%;
+            max-width: 500px;
+
+            padding: 25px;
+
+            animation: appear 1.5s ease;
+        }
+
+
+        .small-text {
+
+            font-size: 13px;
+
+            letter-spacing: 4px;
+
+            text-transform: uppercase;
+
+            opacity: .85;
+
+            margin-bottom: 20px;
+        }
+
+
+        h1 {
+
+            font-size:
+                clamp(48px, 14vw, 78px);
+
+            line-height: .95;
+
+            font-weight: 800;
+
+            text-shadow:
+                0 5px 25px rgba(0,0,0,.5);
+
+            margin-bottom: 18px;
+        }
+
+
+        .name {
+
+            font-size: 25px;
+
+            font-weight: 600;
+
+            margin-bottom: 30px;
+        }
+
+
+        /* =========================
+           BUTTON
+        ========================= */
+
+        .button {
+
+            border: none;
+
+            padding: 15px 30px;
+
+            border-radius: 50px;
+
+            background: rgba(255,255,255,.92);
+
+            color: #4b075e;
+
+            font-size: 15px;
+
+            font-weight: bold;
+
+            cursor: pointer;
+
+            box-shadow:
+                0 10px 35px rgba(0,0,0,.35);
+
+            transition: .3s;
+        }
+
+
+        .button:active {
+
+            transform: scale(.94);
+
+        }
+
+
+        /* =========================
+           WISH
+        ========================= */
+
+        .wish {
+
+            display: none;
+
+            max-height: 80vh;
+
+            overflow-y: auto;
+
+            padding: 28px 22px;
+
+            border-radius: 25px;
+
+            background:
+                rgba(0,0,0,.42);
+
+            border:
+                1px solid rgba(255,255,255,.25);
+
+            backdrop-filter: blur(10px);
+
+            -webkit-backdrop-filter: blur(10px);
+
+            animation:
+                wishAppear 1s ease;
+        }
+
+
+        .wish h2 {
+
+            font-size: 30px;
+
+            margin-bottom: 20px;
+
+        }
+
+
+        .wish p {
+
+            font-size: 16px;
+
+            line-height: 1.75;
+
+            text-align: center;
+
+        }
+
+
+        .wish strong {
+
+            color: #ffd5ed;
+
+        }
+
+
+        .final {
+
+            display: none;
+
+            animation:
+                finalAppear 1.2s ease;
+        }
+
+
+        .final-number {
+
+            font-size:
+                clamp(90px, 25vw, 150px);
+
+            font-weight: 900;
+
+            line-height: .8;
+
+            text-shadow:
+                0 10px 35px rgba(0,0,0,.5);
+        }
+
+
+        .final-text {
+
+            margin-top: 35px;
+
+            font-size: 22px;
+
+            line-height: 1.5;
+
+        }
+
+
+        /* =========================
+           CONFETTI
+        ========================= */
+
+        #confetti {
+
+            position: fixed;
+
+            inset: 0;
+
+            pointer-events: none;
+
+            z-index: 20;
+
+            overflow: hidden;
+        }
+
+
+        .confetti {
+
+            position: absolute;
+
+            top: -20px;
+
+            width: 7px;
+
+            height: 13px;
+
+            animation:
+                fall linear forwards;
+        }
+
+
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
+        @keyframes appear {
+
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+
+        }
+
+
+        @keyframes wishAppear {
+
+            from {
+                opacity: 0;
+                transform:
+                    scale(.9)
+                    translateY(30px);
+            }
+
+            to {
+                opacity: 1;
+                transform:
+                    scale(1)
+                    translateY(0);
+            }
+
+        }
+
+
+        @keyframes finalAppear {
+
+            from {
+                opacity: 0;
+                transform: scale(.7);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+        }
+
+
+        @keyframes fall {
+
+            from {
+
+                transform:
+                    translateY(-20px)
+                    rotate(0deg);
+
+            }
+
+            to {
+
+                transform:
+                    translateY(110vh)
+                    translateX(var(--drift))
+                    rotate(720deg);
+
+                opacity: 0;
+
+            }
+
+        }
+
+
+        /* =========================
+           MOBILE
+        ========================= */
+
+        @media (max-width: 480px) {
+
+            .content {
+
+                width: 94%;
+
+                padding: 15px;
+
+            }
+
+
+            .wish {
+
+                padding: 24px 18px;
+
+                max-height: 75vh;
+
+            }
+
+
+            .wish h2 {
+
+                font-size: 26px;
+
+            }
+
+
+            .wish p {
+
+                font-size: 15px;
+
+                line-height: 1.65;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<div class="screen">
+
+    <div class="overlay"></div>
+
+    <div id="confetti"></div>
+
+
+    <div class="content">
+
+
+        <!-- =====================
+             OPENING
+        ====================== -->
+
+        <div id="opening">
+
+            <div class="small-text">
+                A new chapter begins
+            </div>
+
+
+            <h1>
+                Stepping<br>
+                Into 22
+            </h1>
+
+
+            <div class="name">
+                Nuva ❤️
+            </div>
+
+
+            <button
+                class="button"
+                onclick="showWish()">
+
+                Open your wish 💌
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================
+             BIRTHDAY WISH
+        ====================== -->
+
+        <div
+            class="wish"
+            id="wish">
+
+            <h2>
+                Happy Birthday, Nuva! 🎂
+            </h2>
+
+
+            <p>
+
+                Many more happy returns of the day, Nuva! ❤️ I wish you lots of success, happiness, good health, strength and lots of blessings in your life. I hope you achieve everything you wish for and have a beautiful and successful future ahead. Since the day we met, we’ve had lots of fights, misunderstandings and so many ups and downs, but still, after everything, we’ve managed to remain good friends. Your maturity is one of the reasons why we are still together even after all these fights, and I really hope this bond continues for many more years with more understanding, happiness and good memories. Once again, Happy Birthday, Nuva! 🎉 Stay happy, stay strong and have an amazing year ahead! ✨
+
+            </p>
+
+
+            <br>
+
+
+            <button
+                class="button"
+                onclick="showFinal()">
+
+                One last thing ✨
+
+            </button>
+
+        </div>
+
+
+        <!-- =====================
+             FINAL
+        ====================== -->
+
+        <div
+            class="final"
+            id="final">
+
+            <div class="small-text">
+                A new age begins
+            </div>
+
+
+            <div class="final-number">
+                22
+            </div>
+
+
+            <div class="final-text">
+
+                Stepping Into 22 ✨
+
+                <br>
+
+                Happy Birthday, Nuva ❤️
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</div>
+
+
+
+<script>
+
+
+/* =========================
+   SHOW WISH
+========================= */
+
+function showWish() {
+
+    document.getElementById("opening")
+        .style.display = "none";
+
+    document.getElementById("wish")
+        .style.display = "block";
+
+    createConfetti(120);
+
+}
+
+
+/* =========================
+   SHOW FINAL
+========================= */
+
+function showFinal() {
+
+    document.getElementById("wish")
+        .style.display = "none";
+
+    document.getElementById("final")
+        .style.display = "block";
+
+    createConfetti(200);
+
+}
+
+
+/* =========================
+   CONFETTI
+========================= */
+
+const colors = [
+
+    "#ff4d6d",
+    "#ffd166",
+    "#06d6a0",
+    "#4cc9f0",
+    "#ffffff",
+    "#c77dff",
+    "#ff9f1c"
+
+];
+
+
+function createConfetti(amount) {
+
+    const container =
+        document.getElementById("confetti");
+
+
+    for (
+        let i = 0;
+        i < amount;
+        i++
+    ) {
+
+        const piece =
+            document.createElement("div");
+
+
+        piece.className =
+            "confetti";
+
+
+        piece.style.left =
+            Math.random() * 100 + "vw";
+
+
+        piece.style.background =
+            colors[
+                Math.floor(
+                    Math.random() *
+                    colors.length
+                )
+            ];
+
+
+        piece.style.width =
+            5 + Math.random() * 7 + "px";
+
+
+        piece.style.height =
+            8 + Math.random() * 12 + "px";
+
+
+        piece.style.animationDuration =
+            3 + Math.random() * 4 + "s";
+
+
+        piece.style.setProperty(
+            "--drift",
+            (Math.random() - .5) *
+            45 + "vw"
+        );
+
+
+        container.appendChild(piece);
+
+
+        setTimeout(() => {
+
+            piece.remove();
+
+        }, 8000);
+
+    }
+
+}
+
+
+</script>
+
+
+</body>
+
+</html>
